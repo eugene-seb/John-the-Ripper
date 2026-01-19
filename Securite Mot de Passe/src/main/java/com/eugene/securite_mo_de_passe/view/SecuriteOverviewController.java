@@ -98,40 +98,34 @@ public class SecuriteOverviewController {
         String algo = choisirAlgo();
         if (fileTextField.getText() == null || fileTextField.getText().length() == 0)
             if (confirmWordListGenerated())
-                fileTextField.setText("ressource/Word List.txt");
+                fileTextField.setText("resources/Word List.txt");
             else {
                 pwdLabel.setText("No Matching");
                 return;
             }
         try {
-            File fichier = new File(fileTextField.getText());
-            FileReader fileR = new FileReader(fichier);
-            try (BufferedReader bufferedR = new BufferedReader(fileR)) {
-                String str; // lecteur de ligne
-                String[] mots = null; // liste de mots de la ligne actuelle
-
-                // Lecture de chaque ligne du fihier
+            InputStream in = getClass().getResourceAsStream("/word List.txt");
+            if (in == null) {
+                pwdLabel.setText("No Matching (file not found)");
+                return;
+            }
+            try (BufferedReader bufferedR = new BufferedReader(new InputStreamReader(in))) {
+                String str;
+                String[] mots = null;
                 while ((str = bufferedR.readLine()) != null) {
-                    // Split des mots par " "
                     mots = str.split(" ");
-
-                    // Parcours des mots de la ligne en cours un a un
                     for (String mot : mots)
                         if (mdpTmp.matches(hacher(mot, algo))) {
                             pwdLabel.setText("Matching : " + mot);
                             Securite tempSecu = new Securite(mdpTmp, mot);
                             mainApp.getHistoryData().add(tempSecu);
-                            bufferedR.close(); // close the current flux
                             return;
                         } else {
                             pwdLabel.setText("No Matching");
                         }
                 }
             }
-        } catch (FileNotFoundException ex) {
-            System.out.println("Erreur : " + ex);
-            pwdLabel.setText("No Matching");
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             System.out.println("Erreur : " + ex);
             pwdLabel.setText("No Matching");
         }
