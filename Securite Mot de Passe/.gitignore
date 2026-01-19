@@ -1,0 +1,61 @@
+# General
+.DS_Store
+Thumbs.db
+hs_err_pid*
+logs/
+*.log
+
+# Java / JVM
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+
+# Maven
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/
+
+# Build directories
+build/
+out/
+
+# IDEs and editors
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+
+# IntelliJ artifacts
+/out/
+
+# OS generated files
+._*
+
+# Environment
+.env
+.env.*
+
+# Test, reports, coverage
+target/site/
+target/surefire-reports/
+target/failsafe-reports/
+coverage/
+
+# Other
+node_modules/
+dist/
