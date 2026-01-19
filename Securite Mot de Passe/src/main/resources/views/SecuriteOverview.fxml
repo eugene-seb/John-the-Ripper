@@ -148,7 +148,7 @@
                         <ImageView fitHeight="128.0" fitWidth="107.0" layoutX="389.0" layoutY="15.0"
                             pickOnBounds="true">
                             <image>
-                                <Image url="file:ressource/logo.jpg" />
+                                <Image url="@/img/logo.jpg" />
                             </image>
                         </ImageView>
                         <Label fx:id="pwdLabel" layoutX="166.0" layoutY="324.0" text="No Matching"

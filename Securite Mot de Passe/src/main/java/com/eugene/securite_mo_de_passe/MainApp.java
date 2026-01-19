@@ -147,8 +147,8 @@ public class MainApp extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("HASH WORD CRACKER");
 
-        // Set the application icon.
-        this.primaryStage.getIcons().add(new Image("file:ressource/logo1.jpg"));
+        // Set the application icon from resources/img/logo1.jpg
+        this.primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/img/logo1.jpg")));
 
         initRootLayout();
 
